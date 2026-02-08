@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -14,6 +15,19 @@ public class TwoSum {
         }
     return new int[]{-1,-1};
     }    
+
+    public static String twoSum1(int[] nums , int target){
+        int left = 0 , right = nums.length-1;
+
+        Arrays.sort(nums);
+
+        while(left < right){
+            if(nums[left] + nums[right] == target) return "Yes";
+            if(nums[left]+nums[right] > target) right--;
+            if(nums[left] + nums[right] < target) left++;
+        }
+        return "False";
+    }
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -32,7 +46,8 @@ public class TwoSum {
 
         int[] result = twoSum(arr, k);
 
-        System.out.print("The target can be achieved by the elements of the indexes : " + result[0] + ", " + result[1]);
+        // System.out.print("The target can be achieved by the elements of the indexes : " + result[0] + ", " + result[1]);
+        System.out.print("Can the target be achieved : " + twoSum1(arr, k));
 
     }
 }
